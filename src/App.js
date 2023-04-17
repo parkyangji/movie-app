@@ -1,34 +1,14 @@
-import Button from "./Button";
-import styled from "./App.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function App() {
-  const [counter, setValue] = useState(0);
-  const [keyword, setKeyword] = useState("");
-  const onClick = () => setValue((prev) => prev + 1);
-  const onChange = (event) => setKeyword(event.target.value);
-
-  useEffect(() => {
-    console.log("once");
-  }, []);
-
-  useEffect(() => {
-    if (keyword !== "" && keyword.length >5) {
-      console.log("SEARCH FOR", keyword);
-    }
-  }, [keyword]);
-
-  useEffect(() => {
-      console.log("Change Counter", counter);
-  }, [counter]);
-
+  const [toDo, setToDo] = useState("");
+  const onChange = (event) => setToDo(event.target.value);
   return (
-    <div className="App">
-      <input value={keyword} onChange={onChange} type="text" placeholder="Search here..." />
-      <h1 className={styled.title}>Welcome back!</h1>
-      <Button text={"Continue"}/>
-      <h2>{counter}</h2>
-      <button onClick={onClick}>Click me</button>
+    <div>
+      <form>
+        <input onChange={onChange} value={toDo} type="text" placeholder="Write your to do..."></input>
+        <button>Add To Do</button>
+      </form>
     </div>
   );
 }
