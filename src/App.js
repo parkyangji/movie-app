@@ -11,6 +11,8 @@ const App = createBrowserRouter([
     path: "/movie/:id",
     element: <Detail />,
   },
-]);
+],
+{ basename: process.env.PUBLIC_URL}
+);
 
 export default App;
